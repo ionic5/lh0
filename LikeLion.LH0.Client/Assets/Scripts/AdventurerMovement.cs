@@ -13,7 +13,7 @@ public class AdventurerMovement : MonoBehaviour, IMovement
     private CapsuleCollider2D coll;
 
     private float h, v;
-    
+
     private bool isLadder;
     public bool IsLadder
     {
@@ -60,6 +60,15 @@ public class AdventurerMovement : MonoBehaviour, IMovement
 
     void FixedUpdate()
     {
+        if (!anim.GetBool("IsGround"))
+        {
+            float verticalVelocity = rb.linearVelocityY;
+            if (verticalVelocity < -float.Epsilon)
+                anim.SetBool("IsFall", true);
+            else
+                anim.SetBool("IsFall", false);
+        }
+
         SetAnimation();
         Move();
     }
@@ -102,7 +111,7 @@ public class AdventurerMovement : MonoBehaviour, IMovement
         else
         {
             if (currentInteractable != null)
-                currentInteractable.UnInteract ();
+                currentInteractable.UnInteract();
         }
     }
 
