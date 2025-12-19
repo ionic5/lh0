@@ -150,18 +150,18 @@ public class AdventurerMovement : MonoBehaviour, IMovement
             transform.localScale = new Vector3(scaleX, 1, 1);
         }
 
-        if (v < -0.45f) // Crouch 상태
-        {
-            coll.offset = new Vector2(coll.offset.x, 0.55f);
-            coll.size = new Vector2(coll.size.x, 1.1f);
-            moveSpeed = 1f;
-        }
-        else if (v >= -0.45f) // Idle 상태
-        {
-            coll.offset = new Vector2(coll.offset.x, 0.87f);
-            coll.size = new Vector2(coll.size.x, 1.6f);
-            moveSpeed = 3f;
-        }
+        //if (v < -0.45f) // Crouch 상태
+        //{
+        //    coll.offset = new Vector2(coll.offset.x, 0.55f);
+        //    coll.size = new Vector2(coll.size.x, 1.1f);
+        //    moveSpeed = 1f;
+        //}
+        //else if (v >= -0.45f) // Idle 상태
+        //{
+        //    coll.offset = new Vector2(coll.offset.x, 0.87f);
+        //    coll.size = new Vector2(coll.size.x, 1.6f);
+        //    moveSpeed = 3f;
+        //}
 
         anim.SetFloat("AxisX", h);
         anim.SetFloat("AxisY", v);
