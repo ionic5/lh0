@@ -23,18 +23,13 @@ public class Door : MonoBehaviour, IInteractable
 
     public void Interact(Transform interactor = null)
     {
-        StartCoroutine(InteractRoutine(interactor));
-    }
-
-    IEnumerator InteractRoutine(Transform interactor)
-    {
-        sound.SoundOneShot("Door Open");
-        fade.Fade(3, Color.black, true);
-        yield return new WaitForSeconds(3f);
+        //fade.Fade(3, Color.black, true);
+        //yield return new WaitForSeconds(3f);
 
         if (!IsInteracting)
         {
-            interactor.position = houseInPos;
+            sound.SoundOneShot("Door Open");
+            //interactor.position = houseInPos;
 
             foreach (var obj in insideObjs)
                 obj.SetActive(true);
@@ -44,8 +39,9 @@ public class Door : MonoBehaviour, IInteractable
         }
         else
         {
-            interactor.position = houseOutPos;
-            
+            //interactor.position = houseOutPos;
+            sound.SoundOneShot("Door Close");
+
             foreach (var obj in insideObjs)
                 obj.SetActive(false);
 
@@ -55,11 +51,47 @@ public class Door : MonoBehaviour, IInteractable
 
         IsInteracting = !IsInteracting;
 
-        sound.SoundOneShot("Door Close");
-        yield return new WaitForSeconds(1f);
+        //yield return new WaitForSeconds(1f);
 
-        fade.Fade(3, Color.black, false);
+        //fade.Fade(3, Color.black, false);
+
+        //StartCoroutine(InteractRoutine(interactor));
     }
+
+    //IEnumerator InteractRoutine(Transform interactor)
+    //{
+    //    sound.SoundOneShot("Door Open");
+    //    //fade.Fade(3, Color.black, true);
+    //    //yield return new WaitForSeconds(3f);
+
+    //    if (!IsInteracting)
+    //    {
+    //        //interactor.position = houseInPos;
+
+    //        //foreach (var obj in insideObjs)
+    //        //    obj.SetActive(true);
+
+    //        foreach (var obj in outsideObjs)
+    //            obj.SetActive(false);
+    //    }
+    //    else
+    //    {
+    //        //interactor.position = houseOutPos;
+
+    //        //foreach (var obj in insideObjs)
+    //        //    obj.SetActive(false);
+
+    //        foreach (var obj in outsideObjs)
+    //            obj.SetActive(true);
+    //    }
+
+    //    IsInteracting = !IsInteracting;
+
+    //    sound.SoundOneShot("Door Close");
+    //    //yield return new WaitForSeconds(1f);
+
+    //    //fade.Fade(3, Color.black, false);
+    //}
 
     public void UnInteract()
     {
