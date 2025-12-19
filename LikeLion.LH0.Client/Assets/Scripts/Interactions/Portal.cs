@@ -11,7 +11,7 @@ public class Portal : MonoBehaviour, IInteractable
 
     [SerializeField] private FadeEvent fade;
     [SerializeField] private GameObject loadUI;
-    [SerializeField] private GameObject portalEffect;
+    //[SerializeField] private GameObject portalEffect;
 
     [SerializeField] private Image progressBar;
 
@@ -25,7 +25,7 @@ public class Portal : MonoBehaviour, IInteractable
     IEnumerator SceneLoadRoutine()
     {
         fade.Fade(3, Color.white, true);
-        portalEffect.SetActive(true);
+        //portalEffect.SetActive(true);
         yield return new WaitForSeconds(3f);
 
         fade.Fade(3, Color.white, false);
