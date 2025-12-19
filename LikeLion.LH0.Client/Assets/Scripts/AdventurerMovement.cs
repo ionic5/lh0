@@ -26,14 +26,21 @@ public class AdventurerMovement : MonoBehaviour, IMovement
             isLadder = value;
 
             if (isLadder)
+            {
                 rb.gravityScale = 0;
+                rb.excludeLayers |= groundLayerMask;
+            }
             else
+            {
                 rb.gravityScale = 1;
+                rb.excludeLayers &= ~groundLayerMask;
+            }
         }
     }
 
     [SerializeField] private float moveSpeed = 3f;
     [SerializeField] private float jumpPower = 7f;
+    [SerializeField] private LayerMask groundLayerMask;
 
     private IInteractable currentInteractable;
 
