@@ -12,12 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27b33eb2f29b40a4db57e7073efd4d32, type: 3}
   m_Name: NPC_Batur
   m_EditorClassIdentifier: 
-  name: "\uBC14\uD22C\uB974 (Batur)"
+  name: "\uD574\uACE8 \uBCD1\uC0AC \uC2DC\uCCB4"
   age: "65\uC138"
   gender: "\uB0A8\uC131"
   job: "\uB300\uC7A5\uC7A5\uC774"
-  description: "\uC624\uB79C\uB9CC\uC774\uAD70, \uBAA8\uD5D8\uAC00! \uC624\uB298\uC740
-    \uC5B4\uB5A4 \uC1E0\uBD99\uC774\uB97C \uB2EC\uAD74 \uC148\uC778\uAC00?\n\uC790\uB124\uC758
-    \uB3C4\uC804\uC5D0 \uAC78\uB9DE\uC740 \uBB34\uAE30\uB97C \uB0B4 \uD654\uB85C\uAC00
-    \uAE30\uB2E4\uB9AC\uACE0 \uC788\uB124"
-  icon: {fileID: 21300000, guid: 5ab3fa50e60c769468acb0e646e9aa88, type: 3}
+  description: "\uBC18\uC751\uC774 \uC5C6\uB2E4. \uADF8\uB0E5 \uC2DC\uCCB4 \uC778
+    \uAC83 \uAC19\uB2E4."
+  icon: {fileID: -9123648500807064164, guid: c1456b09ad94b1b46883f7bf2dc585f5, type: 3}

@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27b33eb2f29b40a4db57e7073efd4d32, type: 3}
   m_Name: NPC_Jacob
   m_EditorClassIdentifier: 
-  name: "\uC81C\uC774\uCF65 (Jacob)"
+  name: "\uD761\uD608\uADC0 \uC2DC\uCCB4"
   age: "76\uC138"
   gender: "\uB0A8\uC131"
   job: "\uD1F4\uC5ED\uBAA8\uD5D8\uAC00"
-  description: "\uB77C\uB5BC\uB294..."
-  icon: {fileID: 7963507245444735400, guid: ec10b46feb584e647b5bebf8b2c7afb2, type: 3}
+  description: "\uD761\uD608\uADC0\uB294 \uAC15\uB825\uD55C \uB9C8\uBB3C\uC774\uB2E4.
+    \uB098\uBB34\uAFBC\uB4E4\uC774 \uC774 \uC624\uB450\uB9C9\uC744 \uBC84\uB9AC\uACE0
+    \uAC04 \uC9C1\uC811\uC801\uC778 \uC6D0\uC778\uC73C\uB85C \uBCF4\uC778\uB2E4."
+  icon: {fileID: -1279182169951451124, guid: e0f817b94ce2d9546a99e62ab0942841, type: 3}
