@@ -53,45 +53,20 @@ namespace Platformer
             if (target != null)
             {
                 target.TakeDamage(damage);
-                
+
                 // Debug.Log($"{gameObject.name}이 {other.name}에게 {damage}만큼의 데미지 적용");
             }
         }
 
         public void Attack()
         {
-            if (!isAttack) // 처음 공격키를 눌렀을 때
-            {
-                isAttack = true;
-                anim.SetTrigger("Attack");
-            }
-            else // 공격키를 추가로 눌렀을 때
-            {
-                if (!isCombo)
-                    isCombo = true;
-                else
-                    isFinal = true;
-            }
-        }
+            anim.SetTrigger("Attack");
+            //if (!isAttack) // 처음 공격키를 눌렀을 때
+            //{
+            //    //isAttack = true;
 
-        public void CheckCombo()
-        {
-            int currentCombo = anim.GetInteger("Combo"); // 현재 Combo라는 파라미터의 값을 가져오는 기능
-
-            if (isCombo && currentCombo == 0)
-                anim.SetInteger("Combo", 1);
-            else if (isFinal && currentCombo == 1)
-                anim.SetInteger("Combo", 2);
-            else
-                ClearCombo();
-        }
-
-        public void ClearCombo()
-        {
-            isAttack = false;
-            isCombo = false;
-            isFinal = false;
-            anim.SetInteger("Combo", 0);
+            //    //ClearCombo();
+            //}
         }
 
         public void AttackSound(string clipName)
@@ -104,7 +79,7 @@ namespace Platformer
             hp -= damage;
 
             SetHpUI();
-            
+
             if (hp <= 0)
                 Death();
         }
@@ -117,10 +92,10 @@ namespace Platformer
         public void Heal(float healPoint)
         {
             hp += healPoint;
-            
+
             if (hp > maxHp)
                 hp = maxHp;
-            
+
             SetHpUI();
         }
 
