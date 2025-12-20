@@ -5,6 +5,7 @@ using UnityEngine;
 public class PushPlatform : MonoBehaviour, IInteractable
 {
     private AdventurerMovement movement;
+    [SerializeField]
     private Animator anim;
 
     private Coroutine pushRoutine;
@@ -15,25 +16,27 @@ public class PushPlatform : MonoBehaviour, IInteractable
 
     public void Interact(Transform interactor = null)
     {
-        pushRoutine = StartCoroutine(PushRoutine(interactor));
+        PushRoutine(interactor);
     }
 
-    IEnumerator PushRoutine(Transform interactor)
+    void PushRoutine(Transform interactor)
     {
-        yield return new WaitForSeconds(1f);
-
         Rigidbody2D rb = interactor.GetComponent<Rigidbody2D>();
-        
+
         movement = interactor.GetComponent<AdventurerMovement>();
         movement.SetGroundAnimation(true);
 
         if (rb != null)
-            rb.AddForceY(pushPower, ForceMode2D.Impulse);
+        {
+            rb.AddForceY(pushPower, ForceMode2D.Impulse); rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0);
+            rb.AddForce(Vector2.up * pushPower, ForceMode2D.Impulse);
+        }
+
+        anim.SetTrigger("Push");
     }
 
     public void UnInteract()
     {
         movement.SetGroundAnimation(false);
-        StopCoroutine(pushRoutine);
     }
 }
