@@ -9,8 +9,8 @@ namespace Platformer
         private float patrolTime = 5f;
         private float attackTime;
 
-        private float traceDistance = 5f;
-        private float attackDistance = 2f;
+        private float traceDistance = 3f;
+        private float attackDistance = 1f;
 
         void Start()
         {
