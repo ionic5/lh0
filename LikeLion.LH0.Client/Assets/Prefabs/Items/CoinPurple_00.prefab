@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4845946395186323226}
   - component: {fileID: 2201951279313857469}
   - component: {fileID: 3979138401340728298}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: CoinPurple_00
   m_TagString: Untagged
   m_Icon: {fileID: 0}

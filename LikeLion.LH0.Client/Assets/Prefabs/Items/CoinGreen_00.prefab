@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5758662850769052323}
   - component: {fileID: 4185043170248956792}
   - component: {fileID: 211430991334765665}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: CoinGreen_00
   m_TagString: Untagged
   m_Icon: {fileID: 0}
