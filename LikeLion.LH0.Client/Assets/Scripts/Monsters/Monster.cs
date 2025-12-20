@@ -11,28 +11,32 @@ namespace Platformer
         public MonsterState monsterState = MonsterState.Idle;
 
         private ItemManager itemManager;
-        
+
         protected Transform target;
-        
+
         protected Animator anim;
         private Rigidbody2D rb;
         private Collider2D coll;
 
         public GameObject returnPortal;
-        
+
         [SerializeField] protected Slider hpSlider;
 
         [SerializeField] protected MonsterDataSO monsterData;
-        
-        protected float hp, maxHp;
+
+        [SerializeField]
+        protected float hp;
+        [SerializeField]
+        protected float maxHp;
         protected float moveSpeed;
+        [SerializeField]
         protected float damage;
-        
+
         protected int moveDir;
         protected float distance;
 
         private bool isDead = false;
-        
+
         #region 몬스터 초기화
         protected virtual void Init()
         {
@@ -40,12 +44,12 @@ namespace Platformer
             anim = GetComponent<Animator>();
             rb = GetComponent<Rigidbody2D>();
             coll = GetComponent<Collider2D>();
-            
+
             gameObject.name = monsterData.name;
-            hp = monsterData.hp;
-            maxHp = monsterData.hp;
+            //hp = monsterData.hp;
+            //maxHp = monsterData.hp;
             moveSpeed = monsterData.moveSpeed;
-            damage = monsterData.damage;
+            //damage = monsterData.damage;
 
             target = GameObject.FindGameObjectWithTag("Player").transform;
 
@@ -61,14 +65,14 @@ namespace Platformer
         protected abstract void Trace();
         protected abstract void Attack();
         #endregion
-        
+
         void Update()
         {
             if (isDead)
                 return;
-            
+
             distance = Vector3.Distance(transform.position, target.position);
-            
+
             switch (monsterState)
             {
                 case MonsterState.Idle:
@@ -100,7 +104,7 @@ namespace Platformer
             if (target != null)
             {
                 target.TakeDamage(damage);
-                
+
                 // Debug.Log($"{gameObject.name}이 {other.name}에게 {damage}만큼의 데미지 적용");
             }
         }
@@ -119,7 +123,7 @@ namespace Platformer
             hp -= damage;
             anim.SetTrigger("Hit");
             hpSlider.value = hp / maxHp;
-            
+
             if (hp <= 0)
                 Death();
         }
@@ -130,7 +134,7 @@ namespace Platformer
 
             for (int i = 0; i < ranCount; i++)
                 itemManager.DropItem(transform.position);
-            
+
             isDead = true;
             rb.bodyType = RigidbodyType2D.Kinematic;
             coll.enabled = false;

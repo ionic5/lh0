@@ -19,11 +19,11 @@ namespace Platformer
         [SerializeField] private TextMeshProUGUI hpText;
         [SerializeField] private Image hpBar;
 
-        [SerializeField] private float hp = 10f;
+        [SerializeField] private float hp = 100f;
         // [field: SerializeField] public float Hp { get; private set; }
 
-        private float maxHp;
-        [SerializeField] private float damage = 1f;
+        private float maxHp = 100f;
+        [SerializeField] private float damage = 20f;
 
         private bool isAttack, isCombo, isFinal;
 
@@ -102,7 +102,7 @@ namespace Platformer
         private void SetHpUI()
         {
             hpSlider.value = hp / maxHp;
-            hpText.text = $"{hp * 10} / {maxHp * 10}";
+            hpText.text = $"{hp} / {maxHp}";
 
             if (hp >= 7.5f)
                 hpBar.color = Color.green;
