@@ -1,7 +1,9 @@
 using System;
+using System.Collections;
 using Platformer;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace Platformer
@@ -11,6 +13,9 @@ namespace Platformer
         [HideInInspector] public InputType inputType;
         private SoundManager sound;
         private Animator anim;
+
+        [SerializeField]
+        private GameObject gameOverPanel;
 
         public static int monsterCount = 0;
         public static int monsterKillCount = 0;
@@ -76,7 +81,12 @@ namespace Platformer
 
         public void TakeDamage(float damage)
         {
+            if (hp <= 0)
+                return;
+
             hp -= damage;
+            if (hp < 0)
+                hp = 0;
 
             SetHpUI();
 
@@ -86,7 +96,29 @@ namespace Platformer
 
         public void Death()
         {
-            Debug.Log($"{gameObject.name} 죽음");
+            //anim.SetTrigger("Death");
+
+            //gameOverPanel.SetActive(true);
+
+            //SceneManager.LoadScene(0);
+            StartCoroutine(DeathRoutine());
+        }
+        private IEnumerator DeathRoutine()
+        {
+            // 1. 죽음 애니메이션 실행 (즉시)
+            anim.SetTrigger("Death");
+
+            // 2. 1초 대기
+            yield return new WaitForSeconds(1f);
+
+            // 3. 게임 오버 패널 활성화
+            gameOverPanel.SetActive(true);
+
+            // 4. 2초 대기
+            yield return new WaitForSeconds(2f);
+
+            // 5. 씬 로드 (인덱스 0)
+            SceneManager.LoadScene(0);
         }
 
         public void Heal(float healPoint)
