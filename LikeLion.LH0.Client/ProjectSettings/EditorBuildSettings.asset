@@ -14,6 +14,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/2. Hunting Ground.unity
     guid: 098568c771d62c14c8acad1d2e3ee858
+  - enabled: 1
+    path: Assets/Scenes/Ending.unity
+    guid: cf167b58a388a754f8203566a3b200eb
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class Portal : MonoBehaviour, IInteractable
 {
-    public enum PortalType { ToTown, ToHuntingGround }
+    public enum PortalType { ToTown, ToHuntingGround, ToEnding }
     public PortalType type;
 
     [SerializeField] private FadeEvent fade;
@@ -24,11 +24,11 @@ public class Portal : MonoBehaviour, IInteractable
 
     IEnumerator SceneLoadRoutine()
     {
-        fade.Fade(3, Color.white, true);
+        fade.Fade(3, Color.black, true);
         //portalEffect.SetActive(true);
         yield return new WaitForSeconds(3f);
 
-        fade.Fade(3, Color.white, false);
+        fade.Fade(3, Color.black, false);
         loadUI.SetActive(true);
         progressBar.gameObject.SetActive(false);
         yield return new WaitForSeconds(3f);
@@ -53,30 +53,32 @@ public class Portal : MonoBehaviour, IInteractable
         // else if (type == PortalType.ToHuntingGround)
         //     SceneManager.LoadScene(2);
 
-        
+
         // 비동기 Scene 로드
         AsyncOperation operation = null;
         if (type == PortalType.ToTown)
             operation = SceneManager.LoadSceneAsync(1);
         else if (type == PortalType.ToHuntingGround)
             operation = SceneManager.LoadSceneAsync(2);
-        
+        else if (type == PortalType.ToEnding)
+            operation = SceneManager.LoadSceneAsync(3);
+
         operation.allowSceneActivation = false;
-        
+
         while (!operation.isDone)
         {
             float progress = Mathf.Clamp01(operation.progress / 0.9f);
-            
+
             progressBar.fillAmount = progress;
-        
+
             if (operation.progress >= 0.9f)
             {
                 progressBar.fillAmount = 1f;
-        
+
                 yield return new WaitForSeconds(1f);
                 operation.allowSceneActivation = true;
             }
-        
+
             yield return null;
         }
     }
