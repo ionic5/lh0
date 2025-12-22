@@ -18,7 +18,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Button optionButton;
     [SerializeField] private Button optionExitButton;
     [SerializeField] private Button inventoryButton;
-    
+
     void Start()
     {
         if (sceneType == SceneType.Town)
@@ -32,14 +32,14 @@ public class UIManager : MonoBehaviour
 
             attack.inputType = movement.inputType;
         }
-        
+
         selectedInput.value = (int)movement.inputType;
 
         selectedInput.onValueChanged.AddListener(SetInputType);
 
         optionButton.onClick.AddListener(OptionUIOn);
         optionExitButton.onClick.AddListener(OptionUIOff);
-        
+
         if (inventoryButton != null)
             inventoryButton.onClick.AddListener(InventoryUIOn);
     }
@@ -56,7 +56,7 @@ public class UIManager : MonoBehaviour
         optionUI.SetActive(false);
     }
 
-    private void InventoryUIOn()
+    public void InventoryUIOn()
     {
         if (inventoryUI.activeSelf)
         {
